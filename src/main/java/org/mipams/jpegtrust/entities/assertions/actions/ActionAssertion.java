@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ActionAssertion {
     private String action;
-    private GeneratorInfoMap softwareAgent;
+    private Map<String, String> softwareAgent;
     private Integer softwareAgentIndex;
     private String description;
     private String digitalSourceType;
@@ -32,11 +32,11 @@ public class ActionAssertion {
         this.action = action;
     }
 
-    public GeneratorInfoMap getSoftwareAgent() {
+    public Map<String, String> getSoftwareAgent() {
         return softwareAgent;
     }
 
-    public void setSoftwareAgent(GeneratorInfoMap softwareAgent) {
+    public void setSoftwareAgent(Map<String, String> softwareAgent) {
         this.softwareAgent = softwareAgent;
     }
 

@@ -1,6 +1,7 @@
 package org.mipams.jpegtrust.entities.assertions.actions;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mipams.jpegtrust.entities.assertions.CborAssertion;
 import org.mipams.jpegtrust.entities.assertions.metadata.AssertionMetadata;
@@ -8,25 +9,19 @@ import org.mipams.jpegtrust.entities.validation.ValidationCode;
 import org.mipams.jpegtrust.entities.validation.ValidationException;
 import org.mipams.jumbf.util.MipamsException;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ActionsAssertion extends CborAssertion {
     private List<ActionAssertion> actions;
     private List<ActionTemplate> templates;
-    private List<GeneratorInfoMap> softwareAgents;
+    private List<Map<String, String>> softwareAgents;
     private AssertionMetadata metadata;
     private Boolean allActionsIncluded;
 
     @Override
-    @JsonIgnore
     public boolean isReductable() throws MipamsException {
         throw new ValidationException(ValidationCode.ASSERTION_ACTION_REDACTED);
     }
 
     @Override
-    @JsonIgnore
     public String getLabel() {
         return "c2pa.actions.v2";
     }
@@ -47,11 +42,11 @@ public class ActionsAssertion extends CborAssertion {
         this.templates = templates;
     }
 
-    public List<GeneratorInfoMap> getSoftwareAgents() {
+    public List<Map<String, String>> getSoftwareAgents() {
         return softwareAgents;
     }
 
-    public void setSoftwareAgents(List<GeneratorInfoMap> softwareAgents) {
+    public void setSoftwareAgents(List<Map<String, String>> softwareAgents) {
         this.softwareAgents = softwareAgents;
     }
 
