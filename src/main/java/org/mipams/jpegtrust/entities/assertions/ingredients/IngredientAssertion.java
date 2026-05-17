@@ -12,9 +12,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class IngredientAssertion extends CborAssertion {
 
+    private String label = getDefaultLabel();
+    
+    public String getDefaultLabel() {
+        return "c2pa.ingredient.v3";
+    }
     @Override
     public String getLabel() {
-        return "c2pa.ingredient.v3";
+        return label;
+    }
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     @JsonProperty("dc:title")
